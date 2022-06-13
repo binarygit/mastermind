@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 
 class Player
-  attr_reader :name
   def initialize(name='skynet')
     @name = name
   end
@@ -17,6 +16,8 @@ class Player
   private
 
   def skynet?
-    name == 'skynet'
+    @name == 'skynet'
   end
 end
+
+

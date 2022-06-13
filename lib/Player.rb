@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 class Player
-  def initialize(name='skynet')
+  def initialize(name = 'skynet')
     @name = name
   end
 
@@ -19,5 +19,3 @@ class Player
     @name == 'skynet'
   end
 end
-
-

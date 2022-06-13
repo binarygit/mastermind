@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 require 'debug'
 require 'colorize'
-require_relative 'Player.rb'
+require_relative 'Player'
 
 class Mastermind
   attr_reader :moves_made, :code_maker
@@ -14,13 +14,12 @@ class Mastermind
   def play
     # display_main_menu
     determine_code_maker
-    @code = get_code
-    debugger
+    determine_code_breaker
     loop do
-    @guess = get_guess
-    check_guess
-    return display_win_screen if correctly_guessed
-    return display_lose_screen if moves_made > 11
+      @guess = get_guess
+      check_guess
+      return display_win_screen if correctly_guessed
+      return display_lose_screen if moves_made > 11
     end
   end
 
@@ -36,9 +35,8 @@ class Mastermind
     print '  4  '.colorize(:black).on_light_cyan
   end
 
-  def get_code
+  def code
     @code = @code_maker.create_code
-    p @code
   end
 
   def determine_code_maker
@@ -50,6 +48,12 @@ class Mastermind
     end
     @code_maker = @human if choice == '1'
     @code_maker = @computer if choice == '2'
+  end
+
+  def determine_code_breaker
+    @code_breaker = @human and return if @code_maker == @computer
+
+    @code_breaker = @computer
   end
 end
 

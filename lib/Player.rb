@@ -13,6 +13,17 @@ class Player
     code
   end
 
+  def guess
+    if skynet?
+    else
+      loop do
+        puts 'Please make a guess'
+        guess = gets.chomp.to_i
+        break if (1..6).include?(guess)
+      end
+    end
+  end
+
   private
 
   def skynet?

@@ -55,6 +55,10 @@ class Mastermind
 
     @code_breaker = @computer
   end
+
+  def get_guess
+    @code_breaker.guess
+  end
 end
 
 game = Mastermind.new
